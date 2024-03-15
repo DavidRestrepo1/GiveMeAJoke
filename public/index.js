@@ -1,9 +1,21 @@
+import initilizeApp from "firebase";
 import express from "express";
 import axios from "axios";
 import bodyparser from "body-parser";
 
-const app = express();
+const app = express;
 const port = 3000;
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDvCTDNw5U3UMeIN4KQwZiIn1z8wa_wkjA",
+    authDomain: "generatemeajoke.firebaseapp.com",
+    projectId: "generatemeajoke",
+    storageBucket: "generatemeajoke.appspot.com",
+    messagingSenderId: "165168097343",
+    appId: "1:165168097343:web:2ffdf5dc32ce75ec3fb08a"
+};
+
+const appl = initilizeApp(firebaseConfig);
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static("public"));
