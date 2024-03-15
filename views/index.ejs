@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+</head>
+<body>
+    <div id="main">
+        <div id="first">
+            <% if (locals.message) { %>
+                <h1> <%=message%> </h1>
+            <% } %>
+            <% if (locals.setup) { %>
+                <h1><%=setup%></h1>
+            <% } else if (locals.joke) {%>
+                <h1> <%=joke%></h1>
+            <% } %>
+        </div>
+        <div> 
+            <% if (locals.delivery) { %>
+                <h2> <%=delivery%> </h2>
+            <% } %>
+        </div>
+        <form method="post"><button class='glowing-btn' type="submit" formaction="/joke"><span class='glowing-txt'>J<span class='faulty-letter'>O</span>KE</span></button></form>
+        <form id="myForm" method="post">
+            <div class="options">
+                <h3 class="title">Categories</h3>
+                <div class="container">      
+                    <div>
+                        <input class="opt" type="checkbox" name="Programming"/>Programming
+                    </div>
+                    <div>
+                        <input class="opt" type="checkbox" name="Misc"/>Misc
+                    </div>
+                    <div>
+                        <input class="opt" type="checkbox" name="Dark"/>Dark
+                    </div>
+                    <div>
+                        <input class="opt" type="checkbox" name="Pun"/>Pun
+                    </div>
+                </div>
+            </div>
+            <div class="options">
+                <h3 class="title">Restrictions</h3>
+                <div class="container">
+                    <div>
+                        <input class="opt" type="checkbox" name="Nsfw"/>Nsfw
+                    </div>
+                    <div>
+                        <input class="opt" type="checkbox" name="Religious"/>Religious
+                    </div>
+                    <div>
+                        <input class="opt" type="checkbox" name="Political"/>Political
+                    </div>
+                    <div>
+                        <input class="opt" type="checkbox" name="Racist"/>Racist
+                    </div>
+                    <div>
+                        <input class="opt" type="checkbox" name="Sexist"/>Sexist
+                    </div>
+                    <div>
+                        <input class="opt" type="checkbox" name="Explicit"/>Explicit
+                    </div>
+                </div>
+            </div>
+                <div class="options">
+                <h3 class="title">Type</h3>
+                <div class="container">
+                    <div>
+                        <input class="opt" type="checkbox" name="Single"/>Single
+                    </div>
+                    <div>
+                        <input class="opt" type="checkbox" name="Twopart"/>Twopart
+                    </div>
+                </div>
+            </div>        
+        </form>
+    </div>
+    <script>
+    var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
+        $checkboxes = $("container :checkbox");
+
+        $checkboxes.on("change", function(){
+        $checkboxes.each(function(){
+            checkboxValues[this.id] = this.checked;
+        });
+        
+        localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+        });
+
+        // On page load
+        $.each(checkboxValues, function(key, value) {
+        $("#" + key).prop('checked', value);
+        });
+      </script>
+</body>
+</html>
