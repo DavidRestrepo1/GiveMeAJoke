@@ -5,8 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node build/server.js",
-    "serve": "node server.js"
+    "start": "node server.js"
   },
   "author": "David Restrepo",
   "license": "ISC",
