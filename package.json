@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon server."
+    "start": "node build/server.js"
   },
   "author": "David Restrepo",
   "license": "ISC",
